@@ -36,6 +36,10 @@ func Init(options Options) {
 	if options.Level == nil {
 		options.Level = slog.LevelInfo
 	}
+
+	if err := os.MkdirAll(options.LogDir, 0766); err != nil {
+		panic(err)
+	}
 	logPath := path.Join(options.LogDir, fmt.Sprintf("%s.log", options.ProjectName))
 	logFile, err := os.OpenFile(logPath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0766)
 	if err != nil {

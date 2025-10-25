@@ -14,7 +14,7 @@ import (
 // helper to initialize logger to a temporary file
 func initTempLogger(t *testing.T, name string) string {
 	t.Helper()
-	dir := t.TempDir()
+	dir := "./logs"
 	Init(Options{
 		ProjectName: name,
 		LogDir:      dir,
